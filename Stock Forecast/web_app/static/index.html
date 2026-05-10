@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stock Forecast</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Mathematical finance equity model</p>
+          <h1>Stock Forecast</h1>
+        </div>
+        <form id="ticker-form" class="ticker-form">
+          <label class="sr-only" for="ticker-input">Ticker</label>
+          <input
+            id="ticker-input"
+            name="ticker"
+            autocomplete="off"
+            spellcheck="false"
+            maxlength="12"
+            placeholder="AAPL"
+            value="AAPL"
+          />
+          <button type="submit">Analyze</button>
+        </form>
+      </header>
+
+      <section id="status" class="status" aria-live="polite"></section>
+
+      <section id="overview" class="overview is-empty">
+        <div class="overview-main">
+          <div>
+            <p id="company-meta" class="muted">Enter a ticker to begin.</p>
+            <h2 id="company-title">No analysis loaded</h2>
+          </div>
+          <div class="price-block">
+            <span id="current-price">$0.00</span>
+            <small id="price-date">-</small>
+          </div>
+        </div>
+        <div class="score-strip">
+          <div class="score-card">
+            <span>Composite</span>
+            <strong id="overall-score">-</strong>
+          </div>
+          <div class="score-card">
+            <span>Rating</span>
+            <strong id="rating">-</strong>
+          </div>
+          <div class="score-card">
+            <span>Confidence</span>
+            <strong id="confidence">-</strong>
+          </div>
+          <div class="score-card">
+            <span>Risk-Free Rate</span>
+            <strong id="risk-free">-</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="visuals" class="visual-grid is-hidden">
+        <div class="panel">
+          <div class="panel-heading">
+            <h3>Price History</h3>
+            <span id="history-label"></span>
+          </div>
+          <canvas id="price-chart" width="900" height="320"></canvas>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+            <h3>12M Forecast</h3>
+            <span id="forecast-label"></span>
+          </div>
+          <canvas id="forecast-chart" width="900" height="320"></canvas>
+        </div>
+      </section>
+
+      <section id="tabs-section" class="tabs-section is-hidden">
+        <div class="tabs" role="tablist" aria-label="Analysis modules">
+          <button class="tab is-active" type="button" data-tab="summary">Summary</button>
+          <button class="tab" type="button" data-tab="forecast">Forecast</button>
+          <button class="tab" type="button" data-tab="valuation">Valuation</button>
+          <button class="tab" type="button" data-tab="fundamental">Fundamental</button>
+          <button class="tab" type="button" data-tab="technical">Technical</button>
+          <button class="tab" type="button" data-tab="risk">Risk</button>
+        </div>
+        <div id="tab-content" class="tab-content"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+
